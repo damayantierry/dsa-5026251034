@@ -1,0 +1,17 @@
+package lw01.Prelab;
+
+public class MonoPrint {
+    public MonoPrint(String id, int pages) {
+        super(id, pages);
+    }
+
+    @Override
+    public int calculateCharge() {
+        return getPages() * 500;
+    }
+
+    @Override
+    public String label() {
+        return "Mono";
+    }
+}
