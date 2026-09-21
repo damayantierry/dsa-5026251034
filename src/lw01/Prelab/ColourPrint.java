@@ -1,6 +1,6 @@
-package lw01.Prelab;
+package lw01.prelab;
 
-public class ColourPrint {
+public class ColourPrint extends PrintJob {
     public ColourPrint(String id, int pages) {
         super(id, pages);
     }

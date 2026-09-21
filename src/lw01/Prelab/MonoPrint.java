@@ -1,6 +1,6 @@
-package lw01.Prelab;
+package lw01.prelab;
 
-public class MonoPrint {
+public class MonoPrint extends PrintJob {
     public MonoPrint(String id, int pages) {
         super(id, pages);
     }
