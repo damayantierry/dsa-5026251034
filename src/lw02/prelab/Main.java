@@ -1,18 +1,15 @@
 package lw02.prelab;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
 public class Main {
-    LinkedList<String[]> transactions = new LinkedList<>();
+    public static void main(String[] args) {
+        Scanner scannermaya = new Scanner(Main.class.getResourceAsStream("transactions.txt"));
+        LinkedList<String[]> transactions = new LinkedList<>();
         LinkedList<String[]> customers = new LinkedList<>();
 
-         Queue<String[]> q = new LinkedList<>();
-         Stack<String[]> fails = new Stack<>();
-
-        Scanner scannermaya = new Scanner(Main.class.getResourceAsStream("transactions.txt"));{
+        Queue<String[]> q = new LinkedList<>(); //antrian first in first out
+        Stack<String[]> fails = new Stack<>(); //tumpukan last in first out
 
         while(scannermaya.hasNext()){
             String[] transaction = new String[3];
@@ -23,9 +20,9 @@ public class Main {
         }
         scannermaya.close();
         q.addAll(transactions);
-            
+
         while(!q.isEmpty()){ 
-                String[] transaction = q.poll();
+                String[] transaction = q.poll(); //ambil data paling depan dari antrian
                 String name = transaction[0];
                 String type = transaction[1];
                 int amount = Integer.parseInt(transaction[2]);
@@ -58,14 +55,13 @@ public class Main {
         }
 
     System.out.println("=== Final Balances ===");
-    for (String [] helo: customers){
-        System.out.println(helo[0] + ":" + helo[1]);
+    for (String [] customer : customers){
+        System.out.println(customer[0] + ":" + customer[1]);
     }
     System.out.println("=== Failed Transactions ===");
     while(!fails.isEmpty()){
         String [] fail = fails.pop(); 
         System.out.println(fail[0] + " " + fail[1] + " " + fail[2]);
     }
-
 }
 }
