@@ -1,12 +1,10 @@
 package lw03.prelab;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args){
 
         // ==================== PROBLEM 1 ====================
         System.out.println("===== Problem 1 =====");
