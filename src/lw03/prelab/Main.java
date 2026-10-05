@@ -13,31 +13,26 @@ public class Main {
 
         List<String> playlist = new ArrayList<>();
 
-        Scanner scannermaya = new Scanner(new File("src/lw03/prelab/playlist.txt"));
+        Scanner scannermaya = new Scanner(Main.class.getResourceAsStream("playlist.txt"));
 
         while (scannermaya.hasNextLine()) {
             String line = scannermaya.nextLine();
 
             String[] data = line.split(" ", 2);
             String operation = data[0];
+            String song = data[1];
 
             if (operation.equals("ADD")) {
-                String song = data[1];
                 playlist.add(song);
 
             } else if (operation.equals("INSERT")) {
-                String[] insertData = line.split(" ", 3);
-                int index = Integer.parseInt(insertData[1]);
-                String song = insertData[2];
-
-                playlist.add(index, song);
+                String[] insertData = song.split(" ", 2);
+                int index = Integer.parseInt(insertData[0]);
+                String songName = insertData[1];
+                playlist.add(index, songName);
 
             } else if (operation.equals("REMOVE")) {
-                String song = data[1];
-
-                if (playlist.contains(song)) {
                     playlist.remove(song);
-                }
             }
         }
 
@@ -56,7 +51,7 @@ public class Main {
         Set<String> participants = new LinkedHashSet<>();
         int duplicateRegistrations = 0;
 
-        scannermaya = new Scanner(new File("src/lw03/prelab/participants.txt"));
+        scannermaya = new Scanner(Main.class.getResourceAsStream("participants.txt"));
 
         while (scannermaya.hasNextLine()) {
             String name = scannermaya.nextLine();
@@ -87,7 +82,7 @@ public class Main {
         Map<String, Integer> inventory = new LinkedHashMap<>();
         int failedSales = 0;
 
-        scannermaya = new Scanner(new File("src/lw03/prelab/inventory.txt"));
+        scannermaya = new Scanner(Main.class.getResourceAsStream("inventory.txt"));
 
         while (scannermaya.hasNextLine()) {
             String line = scannermaya.nextLine();
@@ -109,8 +104,7 @@ public class Main {
 
             } else if (type.equals("SELL")) {
 
-                if (inventory.containsKey(product)
-                        && inventory.get(product) >= quantity) {
+                if (inventory.containsKey(product) && inventory.get(product) >= quantity) {
 
                     int currentStock = inventory.get(product);
                     inventory.put(product, currentStock - quantity);
